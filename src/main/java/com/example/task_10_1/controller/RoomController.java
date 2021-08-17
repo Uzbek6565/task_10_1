@@ -5,6 +5,7 @@ import com.example.task_10_1.payload.RoomDto;
 import com.example.task_10_1.repository.HotelRepository;
 import com.example.task_10_1.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class RoomController {
     }
 
     @GetMapping("/{hotel_id}")
-    public List<Room> getAllRoomsByHotelId(@PathVariable Integer hotel_id){
+    public Page<Room> getAllRoomsByHotelId(@PathVariable Integer hotel_id){
         if (hotelRepository.existsById(hotel_id))
             return roomRepository.getAllByHotelId(hotel_id);
         return null;
