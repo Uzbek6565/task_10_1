@@ -31,8 +31,8 @@ public class RoomController {
         if (hotelRepository.existsById(hotel_id)) {
             Pageable pageable = PageRequest.of(page, 10);
             Page<Room> all = roomRepository.findAll(pageable);
+            //Page<Room> all = roomRepository.getAllByHotelId(hotel_id, pageable);//This is the second way of returning pageable
             return all;
-            //return roomRepository.getAllByHotelId(hotel_id);
         }
         return null;
     }
